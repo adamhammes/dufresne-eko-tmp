@@ -9,7 +9,8 @@ services:
 
 build:
   stage: build
-  tags: docker
+  tags:
+    - docker
   script:
     - sh build-base-images.sh
     - sh prod.sh build
