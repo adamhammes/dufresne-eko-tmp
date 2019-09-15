@@ -10,4 +10,5 @@ docker build \
 docker build \
     -f infrastructure/statamic-fpm-base.Dockerfile \
     -t statamic-fpm-base \
+    .
 
