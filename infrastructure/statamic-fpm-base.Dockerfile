@@ -9,5 +9,5 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) gd \
   && docker-php-ext-install exif \
   && docker-php-ext-install zip
-COPY infrastructure/php.ini /usr/local/etc/php/
+COPY config/php.ini /usr/local/etc/php/
 

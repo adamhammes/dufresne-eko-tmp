@@ -1,3 +1,3 @@
 FROM nginx:latest
-ADD infrastructure/statamic.nginx.conf /etc/nginx/conf.d
+COPY config/statamic.nginx.conf /etc/nginx/conf.d
 
