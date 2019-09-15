@@ -9,6 +9,10 @@ variables:
 services:
   - docker:stable-dind
 
+before_script:
+  - docker-compose version
+  - docker info
+
 build:
   stage: build
   tags:
