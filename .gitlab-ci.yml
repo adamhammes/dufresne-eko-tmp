@@ -1,4 +1,4 @@
-image: docker-compose:stable
+image: docker-compose:1.24.1
 
 variables:
   DOCKER_DRIVER: overlay2
