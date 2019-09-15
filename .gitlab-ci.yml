@@ -1,0 +1,16 @@
+image: docker:stable
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+services:
+  - docker-dind:stable
+
+build:
+  stage: build
+  tags: docker
+  script:
+    - sh build-base-images.sh
+    - sh prod.sh build
+

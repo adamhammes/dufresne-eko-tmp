@@ -1,0 +1,12 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: ../
+      dockerfile: infrastructure/nginx-prod.Dockerfile
+    ports:
+      - "8000:8000"
+  fpm:
+    build:
+      context: ../
+      dockerfile: infrastructure/fpm-prod.Dockerfile
