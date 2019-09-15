@@ -5,7 +5,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
 
 services:
-  - docker:dind-stable
+  - docker:stable-dind
 
 build:
   stage: build
