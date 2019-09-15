@@ -7,6 +7,10 @@ variables:
 services:
   - docker:stable-dind
 
+before_script:
+  - apk add --no-cache py-pip
+  - pip install docker-compose
+
 build:
   stage: build
   tags:
