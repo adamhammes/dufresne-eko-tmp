@@ -1,0 +1,16 @@
+{
+  "name": "dufresnes",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "css-loader": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}
