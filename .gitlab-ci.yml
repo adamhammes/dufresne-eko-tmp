@@ -1,11 +1,23 @@
 image:
   name: docker/compose:1.24.1
+  # The default entrypoint for the docker/compose image is... docker-compose
+  # [1].  If we want to do anything interesting, however, we'll need to be able
+  # to arbitrary bash commands, which we set up here.
+  #
+  # [1] https://github.com/docker/compose/issues/6614
   entrypoint: ["/bin/sh", "-c"]
 
 variables:
+  # This variable _appears_ to be optional when running the `docker` image.
+  # However, I needed to specify it here, because I'm using the docker/compose
+  # image  ¯\_(ツ)_/¯.
   DOCKER_HOST: tcp://docker:2375/
-  DOCKER_DRIVER: overlay2
   DOCKER_TLS_CERTDIR: ""
+  # This variable is optional, but purportedly has better performance than the
+  # default [1].
+  #
+  # [1] https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#using-the-overlayfs-driver
+  DOCKER_DRIVER: overlay2
 
 services:
   - docker:19.03.1-dind
@@ -16,6 +28,14 @@ before_script:
 
 build:
   stage: build
+  # The "docker" tag _is_ mandatory here. In order to run docker-in-docker, the
+  # runner needs to be "privileged" [1]. Currently, we only have one privileged
+  # shared runner (out of three total). To make sure we always grab the right
+  # runner, we need to match the tag here with the "docker" tag I added on the
+  # privileged shared runner [2].
+  #
+  # [1] https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-workflow-with-docker-executor
+  # [2] https://docs.gitlab.com/ee/ci/runners/#using-tags
   tags:
     - docker
   script:
