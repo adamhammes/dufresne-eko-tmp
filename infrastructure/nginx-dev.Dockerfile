@@ -1,1 +1,0 @@
-FROM statamic-nginx-base

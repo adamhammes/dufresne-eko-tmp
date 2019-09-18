@@ -3,10 +3,10 @@ services:
   nginx:
     build:
       context: ../
-      dockerfile: infrastructure/nginx-prod.Dockerfile
+      dockerfile: infrastructure/nginx.Dockerfile
     ports:
       - "8000:8000"
   fpm:
     build:
       context: ../
-      dockerfile: infrastructure/fpm-prod.Dockerfile
+      dockerfile: infrastructure/statamic.Dockerfile

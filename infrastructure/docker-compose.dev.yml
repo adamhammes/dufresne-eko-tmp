@@ -3,7 +3,7 @@ services:
   nginx:
     build:
       context: ../
-      dockerfile: infrastructure/nginx-dev.Dockerfile
+      dockerfile: infrastructure/nginx.Dockerfile
     ports:
       - "8000:8000"
     volumes:
@@ -11,6 +11,6 @@ services:
   fpm:
     build:
       context: ../
-      dockerfile: infrastructure/fpm-dev.Dockerfile
+      dockerfile: infrastructure/statamic.Dockerfile
     volumes:
       - ../statamic:/var/www/statamic-site/

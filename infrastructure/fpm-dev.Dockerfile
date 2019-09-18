@@ -1,1 +1,0 @@
-FROM statamic-fpm-base
