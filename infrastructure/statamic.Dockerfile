@@ -26,5 +26,6 @@ RUN apt-get update && apt-get install -y \
 
 COPY config/php.ini /usr/local/etc/php/
 COPY statamic/ /var/www/statamic-site/
-COPY --from=npm /app/css /var/www/statamic-site/site/themes/dufresnes/
-COPY --from=npm /app/js /var/www/statamic-site/site/themes/dufresnes/
+COPY --from=npm /app/css /var/www/statamic-site/site/themes/dufresnes/css
+COPY --from=npm /app/js /var/www/statamic-site/site/themes/dufresnes/js
+
