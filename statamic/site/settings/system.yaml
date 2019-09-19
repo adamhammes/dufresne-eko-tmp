@@ -4,5 +4,5 @@ locales:
   en:
     full: en_US
     name: English
-    url: 'http://localhost:8000/'
-timezone: UTC
+    url: /
+timezone: America/New_York
