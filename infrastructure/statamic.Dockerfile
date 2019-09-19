@@ -1,3 +1,17 @@
+FROM node:10 as npm
+
+WORKDIR app/
+
+COPY statamic/site/themes/dufresnes/package.json .
+COPY statamic/site/themes/dufresnes/yarn.lock .
+
+RUN yarn
+
+COPY statamic/site/themes/dufresnes/ .
+
+RUN pwd
+RUN yarn build
+
 FROM php:7-fpm
 RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
@@ -12,3 +26,5 @@ RUN apt-get update && apt-get install -y \
 
 COPY config/php.ini /usr/local/etc/php/
 COPY statamic/ /var/www/statamic-site/
+COPY --from=npm /app/css /var/www/statamic-site/site/themes/dufresnes/
+COPY --from=npm /app/js /var/www/statamic-site/site/themes/dufresnes/
