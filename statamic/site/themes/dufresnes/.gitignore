@@ -1,6 +1,7 @@
 node_modules
 css/
 js/
+!src/js
 yarn-error.log/
 npm-debug.log
 
