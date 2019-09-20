@@ -42,6 +42,7 @@ build:
   script:
     - sh prod.sh build
     - sh prod.sh up --detach
-    - curl localhost:8000
+    - sleep 5
+    - curl docker:8000
     - sh prod.sh down
 
