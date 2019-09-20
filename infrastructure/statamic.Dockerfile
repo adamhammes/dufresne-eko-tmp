@@ -12,6 +12,12 @@ COPY statamic/site/themes/dufresnes/ .
 RUN pwd
 RUN yarn build
 
+FROM composer:1.9.0 as php-installer
+
+WORKDIR /app
+COPY statamic/statamic/composer.json statamic/statamic/composer.lock ./
+RUN composer install
+
 FROM php:7-fpm
 RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
@@ -25,9 +31,13 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install zip
 
 COPY config/php.ini /usr/local/etc/php/
+
 COPY statamic/ /var/www/statamic-site/
+COPY --from=php-installer /app/vendor /var/www/statamic-site/statamic/
+
+
 COPY --from=npm /app/css /var/www/statamic-site/site/themes/dufresnes/css
 COPY --from=npm /app/js /var/www/statamic-site/site/themes/dufresnes/js
-RUN chmod 777 /var/www/statamic-site/site/
+RUN chmod 777 /var/www/statamic-site/
 
 
