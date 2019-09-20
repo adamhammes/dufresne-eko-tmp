@@ -25,6 +25,7 @@ services:
 before_script:
   - docker-compose version
   - docker info
+  - apk add curl
 
 build:
   stage: build
@@ -40,4 +41,7 @@ build:
     - docker
   script:
     - sh prod.sh build
+    - sh prod.sh up --detach
+    - curl localhost:8000
+    - sh prod.sh down
 
