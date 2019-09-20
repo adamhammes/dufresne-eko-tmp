@@ -24,19 +24,12 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install exif \
   && docker-php-ext-install zip
 
-RUN curl -sSL https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer
-
 COPY config/php.ini /usr/local/etc/php/
 
 COPY statamic/ /var/www/statamic-site/
 RUN (cd /var/www/statamic-site/statamic && php composer.phar install)
-RUN cat /var/www/statamic-site/statamic/vendor/autoload.php
-RUN cat /var/www/statamic-site/statamic/bootstrap/../vendor/autoload.php
 
 COPY --from=npm /app/css /var/www/statamic-site/site/themes/dufresnes/css
 COPY --from=npm /app/js /var/www/statamic-site/site/themes/dufresnes/js
-RUN ls /var/www/statamic-site/site/themes/dufresnes/
 RUN chmod 777 /var/www/statamic-site/
-
 
