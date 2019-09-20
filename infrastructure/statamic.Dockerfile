@@ -9,32 +9,21 @@ RUN yarn
 
 COPY statamic/site/themes/dufresnes/ .
 
-RUN pwd
 RUN yarn build
 
 FROM composer:1.9.0 as php-installer
 
 WORKDIR /app
-COPY statamic/site/database ../site/database
-COPY statamic/statamic/composer.json statamic/statamic/composer.lock ./
-RUN composer install
+COPY statamic/site/ site/
+COPY statamic/statamic statamic/
+RUN cd statamic && php composer.phar install
 
 FROM php:7-fpm
-RUN apt-get update && apt-get install -y \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    zlib1g-dev \
-    libzip-dev \
-  && rm -rf /var/lib/apt/lists/* \
-  && docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ \
-  && docker-php-ext-install -j$(nproc) gd \
-  && docker-php-ext-install exif \
-  && docker-php-ext-install zip
 
 COPY config/php.ini /usr/local/etc/php/
 
 COPY statamic/ /var/www/statamic-site/
-COPY --from=php-installer /app/vendor /var/www/statamic-site/statamic/
+COPY --from=php-installer /app/statamic/vendor /var/www/statamic-site/statamic/vendor
 
 
 COPY --from=npm /app/css /var/www/statamic-site/site/themes/dufresnes/css
