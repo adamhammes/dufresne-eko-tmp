@@ -15,6 +15,7 @@ RUN yarn build
 FROM composer:1.9.0 as php-installer
 
 WORKDIR /app
+COPY statamic/site/database ../site/database
 COPY statamic/statamic/composer.json statamic/statamic/composer.lock ./
 RUN composer install
 
