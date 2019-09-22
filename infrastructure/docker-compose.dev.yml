@@ -14,3 +14,12 @@ services:
       dockerfile: infrastructure/statamic.Dockerfile
     volumes:
       - ../statamic:/var/www/statamic-site/
+  node:
+    build:
+      context: ../
+      dockerfile: infrastructure/node-dev.Dockerfile
+    volumes:
+      - ../statamic/site/themes/dufresnes/:/app/
+      # A hack to avoid mounting the node_modules directory
+      # https://stackoverflow.com/questions/29181032/
+      - /app/node_modules/

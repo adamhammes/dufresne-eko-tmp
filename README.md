@@ -9,7 +9,7 @@ If going the Docker route, you'll need...
 
 - Docker
 
-If going with a local PHP installation, you'll need (mac-centric instructions to follow):
+If going with a local PHP installation, you'll need (Mac-centric instructions to follow):
 
 - Homebrew PHP
 
@@ -22,7 +22,7 @@ $ echo 'export PATH="/usr/local/opt/php@7.1/bin:$PATH"' >> ~/.bash_profile
 
 ```
 $ brew install composer
-# Add it to your path...
+$ # Add it to your path...
 $ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bash_profile
 $ source ~/.bash_profile
 ```
@@ -32,11 +32,24 @@ $ source ~/.bash_profile
 ```
 $ composer global require laravel/valet
 $ valet install
+$ valet start
 ```
 
+- [NodeJS](https://nodejs.org/en/download/)
+
 ## Quickstart
+
+If using Docker:
 
 ```
 $ sh dev.sh build
 $ sh dev.sh up
+```
+
+If running locally:
+
+```
+$ sh infrastructure/valet-link.sh
+$ sh yarn.sh install
+$ sh yarn.sh start
 ```
