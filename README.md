@@ -50,6 +50,8 @@ $ sh dev.sh build
 $ sh dev.sh up
 ```
 
+The site will be available at [localhost:8000](http://localhost:8000).
+
 If running locally:
 
 ```
@@ -57,3 +59,5 @@ $ sh infrastructure/valet-link.sh
 $ sh yarn.sh install
 $ sh yarn.sh start
 ```
+
+The site will be available at [statamic.test](http://statamic.test).
