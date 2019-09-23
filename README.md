@@ -61,3 +61,10 @@ $ sh yarn.sh start
 ```
 
 The site will be available at [statamic.test](http://statamic.test).
+
+Test admin credentials:
+
+```
+admin
+Dufresnes2019
+```

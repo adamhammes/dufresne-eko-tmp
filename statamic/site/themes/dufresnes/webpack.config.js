@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
-const CSS_ENTRY = path.resolve(__dirname, "src/sass/redwood.scss");
+const CSS_ENTRY = path.resolve(__dirname, "src/sass/main.scss");
 const JS_ENTRY = path.resolve(__dirname, "src/js/main.js");
 
 const CSS_OUT = "css/dufresnes";
