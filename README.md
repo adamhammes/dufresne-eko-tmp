@@ -38,7 +38,7 @@ $ valet start
 - [NodeJS](https://nodejs.org/en/download/) + [yarn](https://yarnpkg.com/lang/en/docs/install/)
 
 ```
-$ brew install yarn # will also installed node if needed
+$ brew install yarn # will also install node if needed
 ```
 
 ## Quickstart
