@@ -1,5 +1,6 @@
 image:
   name: docker/compose:1.24.1
+  pull: if-not-present
   # The default entrypoint for the docker/compose image is... docker-compose
   # [1].  If we want to do anything interesting, however, we'll need to be able
   # to run arbitrary bash commands, which we set up here.
