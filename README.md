@@ -56,6 +56,7 @@ If running locally:
 
 ```
 $ sh infrastructure/valet-link.sh
+$ (cd statamic/statamic && php composer.phar install)
 $ sh yarn.sh install
 $ sh yarn.sh start
 ```
