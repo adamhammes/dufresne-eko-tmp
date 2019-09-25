@@ -10,7 +10,7 @@ ini_set('display_startup_errors', 1);
 $statamic = './statamic';
 $site_root = '/';
 $control_panel = 'cp';
-$locale = 'en';
+$locale = 'fr';
 define('STATAMIC_ROOT', __DIR__);
 define('RELATIVE_APP', $statamic);
 define('APP', realpath(STATAMIC_ROOT . '/' . rtrim($statamic, '/')));

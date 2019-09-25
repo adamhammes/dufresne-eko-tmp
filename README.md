@@ -46,6 +46,7 @@ $ brew install yarn # will also install node if needed
 If using Docker:
 
 ```
+$ cp statamic/dev.env statamic/.env
 $ sh dev.sh build
 $ sh dev.sh up
 ```
@@ -56,6 +57,7 @@ If running locally:
 
 ```
 $ sh infrastructure/valet-link.sh
+$ cp statamic/dev.env statamic/.env
 $ (cd statamic/statamic && php composer.phar install)
 $ sh yarn.sh install
 $ sh yarn.sh start
